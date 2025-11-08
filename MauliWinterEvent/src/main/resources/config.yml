@@ -1,0 +1,86 @@
+# MauliWinterEvent – Konfiguration
+event:
+  start: '12-01'       # MM-TT (1. Dezember)
+  end:   '12-31'       # MM-TT (31. Dezember)
+  catchup: true        # Nachholen erlaubt
+  daily_one_claim: true  # Nur 1 Claim pro Tag (Mitternacht Reset)
+  midnight_reset_tz: 'SERVER' # SERVER = Systemzeit des Servers
+ui:
+  title: '§b❄ Mauli Adventskalender ❄'
+  bossbar_title: '§bFrohe Winterzeit auf MauliCraft!'
+  claimed_name_prefix: '§7[✓] §fTag '
+  available_name_prefix: '§aTag '
+  locked_name_prefix: '§cTag '
+  euro_symbol: '€'
+storage:
+  type: 'sqlite'
+  sqlite_file: 'winterevent.db'
+rewards:
+  # Platzhalter: %player%
+  default:
+    commands:
+      - "broadcast §b%player% §7hat ein §aAdvents-Geschenk§7 geöffnet!"
+      - "crates givekey %player% Rare 1"
+  special_days:
+    "12-24":
+      commands:
+        - "broadcast §6%player% §7erhält ein §eLegendary §7Weihnachtsgeschenk!"
+        - "crates givekey %player% Legendary 1"
+    "12-25":
+      commands:
+        - "broadcast §6%player% §7erhält ein weiteres §eLegendary §7Weihnachtsgeschenk!"
+        - "crates givekey %player% Legendary 1"
+    "12-31":
+      commands:
+        - "broadcast §d%player% §7räumt das §5Silvester§7-Geschenk ab!"
+        - "crates givekey %player% Vault 1"
+messages:
+  prefix: "§b[Winter]§7 "
+  not_in_event: "Der Adventskalender ist nur vom 01.12. bis 31.12. verfügbar."
+  already_claimed_day: "Du hast diesen Tag bereits abgeholt."
+  daily_limit_reached: "Du hast heute bereits ein Geschenk eingelöst. Komm morgen wieder!"
+  claimed_success: "Geschenk für den §b%s. Dezember §7erfolgreich abgeholt!"
+  reload: "Konfiguration neu geladen."
+
+
+cosmetics:
+  gui_title: '§b❄ Winter Cosmetics ❄'
+  items:
+    SNOW_TRAIL:
+      name: '§fSchnee-Spur'
+      lore:
+        - '§7Hinterlasse bei jeder Bewegung'
+        - '§7eine winterliche Schnee-Partikelspur.'
+    AURORA_HALO:
+      name: '§dAurora-Halo'
+      lore:
+        - '§7Leuchtende Partikel schweben'
+        - '§7sanft um deinen Kopf.'
+
+# Optional: Unlocks via Advent (examples)
+rewards:
+  default:
+    commands:
+      - "broadcast §b%player% §7hat ein §aAdvents-Geschenk§7 geöffnet!"
+      - "crates givekey %player% Rare 1"
+    cosmetics: [ ]
+  special_days:
+    "12-06":
+      commands:
+        - "broadcast §b%player% §7hat den §fSchnee-Spur §7Cosmetic freigeschaltet!"
+      cosmetics: [ "SNOW_TRAIL" ]
+    "12-24":
+      commands:
+        - "broadcast §6%player% §7erhält ein §eLegendary §7Weihnachtsgeschenk!"
+        - "crates givekey %player% Legendary 1"
+      cosmetics: [ "AURORA_HALO" ]
+    "12-25":
+      commands:
+        - "broadcast §6%player% §7erhält ein weiteres §eLegendary §7Weihnachtsgeschenk!"
+        - "crates givekey %player% Legendary 1"
+      cosmetics: [ ]
+    "12-31":
+      commands:
+        - "broadcast §d%player% §7räumt das §5Silvester§7-Geschenk ab!"
+        - "crates givekey %player% Vault 1"
+      cosmetics: [ ]
